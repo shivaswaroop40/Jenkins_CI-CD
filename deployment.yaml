@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: first
+  name: first
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: first
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: first
+    spec:
+      containers:
+      - image: shivaswaroop40/devopsjenk:latest
+        name: devopsjenk
+        resources: {}
+status: {}
