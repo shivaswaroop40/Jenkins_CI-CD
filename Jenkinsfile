@@ -4,7 +4,7 @@ pipeline {
     stages {
             stage('Checkout') {
                 steps {
-                    git 'https://github.com/shivaswaroop40/jenkin_deploy.git'
+                    git 'https://github.com/shivaswaroop40/Jenkins_CI-CD.git'
                 }
             }
             stage('Build') {
@@ -20,7 +20,7 @@ pipeline {
         }
             stage('Deploy') {
                 steps {
-                    deploy adapters: [tomcat9(credentialsId: '2', path: '', url: 'http://192.168.56.114:8080')], contextPath: 'Tomcat_war.war', war: 'target/Tomcat_war.war'
+                    deploy adapters: [tomcat9(credentialsId: 'Tomcat', path: '', url: 'http://172.31.31.39:8090')], contextPath: 'Tomcat_war.war', war: 'target/Tomcat_war.war'
                 }
             }
     }
