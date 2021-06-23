@@ -1,12 +1,14 @@
 ---
-- hosts: web
-  become: true
+
+- hosts: kubeadm
   tasks:
-   - name: stop running container
-     shell: docker stop devopsjenk
+   - name: stop running deployment
+     shell: kubectl delete deploy first
      ignore_errors: yes
-   - name: remove stopped container
-     shell: docker rm devopsjenk
+   - name: stop running service
+     shell: kubectl delete svc devopsjenk
      ignore_errors: yes
-   - name: run docker image
-     shell: docker run -d --name devopsjenk -p 8090:8080 shivaswaroop40/devopsjenk
+   - name: start service
+     shell: kubectl create -f service.yaml
+   - name: start deployment
+     shell: kubectl create -f deployment.yaml
